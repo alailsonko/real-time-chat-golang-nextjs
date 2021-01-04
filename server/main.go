@@ -20,13 +20,11 @@ func main() {
 
 func getPort() string {
 	var port = os.Getenv("PORT")
-	// Set a default port if there is nothing in the environment
 	if port == "" {
 		portEnv := "3030"
 		fmt.Println("INFO: No PORT environment variable detected, defaulting to " + port)
 		return portEnv
 	}
 	portEnv := port
-
 	return portEnv
 }
