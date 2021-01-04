@@ -1,7 +1,6 @@
 package auth
 
 import (
-	"fmt"
 	"log"
 
 	validation "github.com/go-ozzo/ozzo-validation/v4"
@@ -16,6 +15,7 @@ type AccountModel struct {
 	PasswordConfirmation string `json:"passwordConfirmation" xml:"passwordConfirmation" form:"passwordConfirmation"`
 }
 
+// Validate - validate for signup
 func (am AccountModel) Validate() error {
 	return validation.ValidateStruct(&am,
 		validation.Field(&am.Username, validation.Required),
@@ -46,7 +46,12 @@ func SignUp(c *fiber.Ctx) error {
 	log.Println(am.PasswordConfirmation)
 
 	err := am.Validate()
-	fmt.Println(err)
+	if err != nil {
+		response := JSONResponse{StatusCode: 400, StatusMessage: "account not created"}
+		c.JSON(response.StatusMessage)
+		c.SendStatus(response.StatusCode)
+		return nil
+	}
 	response := JSONResponse{StatusCode: 200, StatusMessage: "create successfully"}
 
 	c.JSON(response.StatusMessage)
