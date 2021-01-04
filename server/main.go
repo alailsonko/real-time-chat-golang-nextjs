@@ -5,15 +5,18 @@ import (
 	"log"
 	"os"
 
+	"chat-server.com/auth"
 	"github.com/gofiber/fiber/v2"
 )
+
+func setupRoutes(app *fiber.App) {
+	app.Post("/signup", auth.SignUp)
+}
 
 func main() {
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
+	setupRoutes(app)
 
 	log.Fatal(app.Listen(":" + getPort()))
 }
