@@ -7,6 +7,8 @@ require (
 	github.com/cosmtrek/air v1.21.2 // indirect
 	github.com/creack/pty v1.1.11 // indirect
 	github.com/fatih/color v1.10.0 // indirect
+	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible // indirect
+	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/gofiber/fiber v1.14.6
 	github.com/gofiber/fiber/v2 v2.3.2
 	github.com/imdario/mergo v0.3.11 // indirect
